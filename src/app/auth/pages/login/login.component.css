@@ -29,21 +29,6 @@
     width: 100%;
 }
 
-.forgot-password {
-    float: right;
-    font-size: 12px;
-}
-
-.login-button {
-    background-color: #007bff;
-    /* Ajusta el color del botón */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .signup-link {
     font-size: 14px;
     margin-top: 20px;
@@ -51,7 +36,6 @@
 
 .signup-link a {
     color: #007bff;
-    /* Ajusta el color del enlace */
     text-decoration: none;
 }
 

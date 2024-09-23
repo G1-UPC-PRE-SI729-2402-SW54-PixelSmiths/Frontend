@@ -1,14 +1,14 @@
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
-import { VehiclesService } from '../../services/vehicles.service';
 import { MatButton, MatIconButton } from '@angular/material/button';
+import { VehiclesService } from '../../services/vehicles.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-vehicles',
+  selector: 'app-vehicles-list',
   standalone: true,
   imports: [
     MatGridListModule,
@@ -19,11 +19,12 @@ import { MatButton, MatIconButton } from '@angular/material/button';
     MatButton,
     MatIconButton,
     MatMenuItem,
+    RouterLink
   ],
-  templateUrl: './vehicles.component.html',
-  styleUrl: './vehicles.component.css',
+  templateUrl: './vehicles-list.component.html',
+  styleUrl: './vehicles-list.component.css',
 })
-export class VehiclesComponent implements OnInit {
+export class VehiclesListComponent implements OnInit {
   vehicles: any = [];
   vehiclesService = inject(VehiclesService);
 

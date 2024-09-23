@@ -7,19 +7,15 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import {
+  BaseFormComponent,
+  BaseFormField,
+} from '../../../shared/components/base-form/base-form.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    RouterLink,
-    MatCardModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    NgIf,
-    MatButton,
-    MatInput,
-  ],
+  imports: [RouterLink, BaseFormComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -29,22 +25,23 @@ export class LoginComponent {
   mode: 'sign-in' | 'sign-up';
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
-  form: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
+  fields: BaseFormField[] = [
+    {
+      type: 'text',
+      placeholder: 'Email',
+      formControlName: 'email',
+    },
+    { type: 'password', placeholder: 'Password', formControlName: 'password' },
+  ];
   authService = inject(AuthService);
 
-  submit() {
-    if (!this.form.valid) return;
-
+  handleLogin(formValue: any) {
     if (this.mode === 'sign-up') {
-      this.authService.create(this.form.value).subscribe((res) => {
-        console.log({ res });
+      this.authService.create(formValue).subscribe((res) => {
         this.router.navigateByUrl('/sign-in');
       });
     } else if (this.mode === 'sign-in') {
-      this.authService.loginUser(this.form.value).catch((error) => {
+      this.authService.loginUser(formValue).catch((error) => {
         this.error = error;
       });
     }

@@ -19,6 +19,8 @@
       "brand": "Land Rover",
       "model": "model 1",
       "price": "$100",
+      "plate": "123-abc",
+      "color": "black",
       "images": [
         "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress"
       ]
@@ -27,6 +29,8 @@
       "id": 2,
       "brand": "BMW",
       "model": "model 1",
+      "plate": "123-abc",
+      "color": "black",
       "price": "$200",
       "images": [
         "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress"

@@ -1,3 +1,4 @@
+# FRONTEND
 # Take My Car Web Application
 
 ## Features
@@ -5,7 +6,6 @@
 Features includes are:
 
 - Material Design
-- Internationalization (i18n)
 - Environment configuration
 - JSON Server Fake API
 - CRUD ops
@@ -22,14 +22,13 @@ Features includes are:
 ## Fake API start
 
 ```
-cd server
-sh start.sh
+yarn start:server
 ```
 
 ## Development Server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200`.
 ```
-ng serve --configuration development
+yarn start:dev
 ```
 

@@ -1,0 +1,16 @@
+<button
+  type="button"
+  aria-label="Go back button"
+  mat-icon-button
+  (click)="goBack()"
+>
+  <mat-icon aria-label="go back">arrow_back</mat-icon>
+</button>
+@if (fields.length) {
+<div
+class="grid"
+>
+  <img width="300px" [src]="image" />
+  <app-base-form [fields]="fields"></app-base-form>
+</div>
+}

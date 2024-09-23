@@ -1,0 +1,35 @@
+<mat-card style="padding: 1rem">
+  <mat-card-title>
+    {{ title }}
+    <ng-content select="[header]"></ng-content>
+  </mat-card-title>
+  <mat-card-content>
+    @if (form) {
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+      @for (field of fields; track $index) {
+      <p>
+        <mat-form-field>
+          <input
+            [type]="field.type"
+            matInput
+            [placeholder]="field.placeholder ?? ''"
+            [formControlName]="field.formControlName"
+          />
+        </mat-form-field>
+      </p>
+
+      }
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-flat-button>Submit</button>
+      </div>
+
+      <ng-content select="[footer]"></ng-content>
+    </form>
+    }
+  </mat-card-content>
+</mat-card>
