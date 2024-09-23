@@ -1,0 +1,73 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    .login-container {
+        display: block;
+        /* Cambiamos el display a block en dispositivos móviles */
+    }
+}
+
+.login-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-pattern {
+    background-size: cover;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.forgot-password {
+    float: right;
+    font-size: 12px;
+}
+
+.login-button {
+    background-color: #007bff;
+    /* Ajusta el color del botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-link {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.signup-link a {
+    color: #007bff;
+    /* Ajusta el color del enlace */
+    text-decoration: none;
+}
+
+mat-card-title,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    padding: 16px;
+    color: white;
+    background-color: red;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}

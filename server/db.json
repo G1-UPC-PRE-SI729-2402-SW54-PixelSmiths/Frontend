@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@correo.com",
+      "name": "juan",
+      "password": "123",
+      "role": []
+    },
+    {
+      "email": "1@correo.com",
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "brand": "Land Rover",
+      "model": "model 1",
+      "price": "$100",
+      "images": [
+        "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress"
+      ]
+    },
+    {
+      "id": 2,
+      "brand": "BMW",
+      "model": "model 1",
+      "price": "$200",
+      "images": [
+        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress"
+      ]
+    }
+  ],
+  "invoices": [
+    {
+      "id": 1,
+      "date": "23 jun 2024",
+      "amount": "$125",
+      "status": "paid"
+    }
+  ]
+}

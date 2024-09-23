@@ -1,0 +1,55 @@
+<div class="login-container">
+  <div class="login-form">
+    <mat-card style="padding: 1rem;">
+      <mat-card-title>
+        {{ mode === "sign-in" ? "SIGN IN" : "SIGN UP" }}
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <p>
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="Email"
+                formControlName="email"
+              />
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input
+                type="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+
+          <div class="button">
+            <button type="submit" mat-flat-button>
+              {{ mode === "sign-in" ? "Login" : "Signup" }}
+            </button>
+          </div>
+
+          @if (mode === 'sign-in') {
+          <p class="signup-link">
+            Don't have an account? <a routerLink="/sign-up">Sign Up</a>
+          </p>
+          } @else {
+          <p class="signup-link">
+            Have an account? <a routerLink="/sign-in">Sign Up</a>
+          </p>
+          }
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="background-pattern"></div>
+</div>
