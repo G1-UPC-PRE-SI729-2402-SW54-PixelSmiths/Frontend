@@ -8,6 +8,11 @@ import { DashComponent } from './dashboard/pages/dash/dash.component';
 import { authGuard } from './auth/guard/auth.guard';
 import { VehicleDetailComponent } from './vehicles/pages/vehicle-detail/vehicle-detail.component';
 import { VehiclesListComponent } from './vehicles/pages/vehicles-list/vehicles-list.component';
+import {AddInvoiceComponent} from "./dashboard/pages/invoices/add-invoice/add-invoice.component";
+import {InvoiceCardComponent} from "./dashboard/pages/invoices/invoice-card/invoice-card.component";
+import {
+  InvoiceCreateAndEditComponent
+} from "./dashboard/pages/invoices/invoice-create-and-edit/invoice-create-and-edit.component";
 
 export const routes: Routes = [
   {
@@ -64,6 +69,10 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'add-invoice',
+        component: AddInvoiceComponent,
       },
       {
         path: '**',

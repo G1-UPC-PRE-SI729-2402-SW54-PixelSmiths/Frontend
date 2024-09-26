@@ -1,0 +1,54 @@
+<h2>{{ editMode ? 'Edit Invoice' : 'New Invoice' }}</h2>
+
+<div class="form-section">
+  <form (submit)="onSubmit()" #invoiceForm='ngForm' class="form-row">
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <input id="amount" matInput placeholder="Amount to pay" name="amount" required [(ngModel)]="invoice.amount" #amount="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Number</mat-label>
+      <input id="number" matInput placeholder="Invoice number" name="number" required [(ngModel)]="invoice.code" #number="ngModel">
+      <div *ngIf="number.invalid && (number.dirty || number.touched)" class="error">
+        Number is required.
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Issue Date</mat-label>
+      <input id="issue_date" matInput type="date" placeholder="Issue date" name="issue_date" required [(ngModel)]="invoice.paymentDate" readonly #issue_date="ngModel">
+      <div *ngIf="issue_date.invalid && (issue_date.dirty || issue_date.touched)" class="error">
+        Issue Date is required.
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select id="status" placeholder="Payment status" name="status" required [(ngModel)]="invoice.paymentState" #status="ngModel">
+        <mat-option [value]="'Paid'">
+          Paid
+        </mat-option>
+        <mat-option [value]="'UnPaid'">
+          UnPaid
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Payment Method</mat-label>
+      <mat-select id="payment_method" placeholder="Select payment method" name="payment_method" required [(ngModel)]="invoice.paymentMethod" #payment_method="ngModel">
+        <mat-option [value]="'Paypal'">
+          Paypal
+        </mat-option>
+        <mat-option [value]="'Visa'">
+          Visa
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container>
+      <button mat-raised-button color="primary" class="update-button">Update</button>
+      <button mat-raised-button color="warn" class="cancel-button" >Cancel</button>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+      <button mat-raised-button color="primary" type="submit" class="add-button">Add Invoice</button>
+    </ng-template>
+  </form>
+</div>
