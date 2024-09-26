@@ -11,6 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { AuthService } from '../../../auth/services/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
@@ -29,16 +30,17 @@ import { AuthService } from '../../../auth/services/auth.service';
     MatMenuTrigger,
     MatMenu,
     MatIconButton,
+    TranslateModule,
   ],
 })
 export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   auth = inject(AuthService);
   menuOptions = [
-    { label: 'Vehicles', path: './vehicles' },
-    { label: 'Invoices', path: './invoices' },
-    { label: 'Profile', path: './profile' },
-    { label: 'Support', path: './support' },
+    { label: 'NAV.VEHICLES', path: './vehicles' },
+    { label: 'NAV.INVOICES', path: './invoices' },
+    { label: 'NAV.PROFILE', path: './profile' },
+    { label: 'NAV.SUPPORT', path: './support' },
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -47,6 +49,13 @@ export class NavComponent {
       map((result) => result.matches),
       shareReplay()
     );
+
+  constructor() {
+    console.log(this.auth.user)
+    if (this.auth.user.role === 'customer') {
+      this.menuOptions.unshift({ label: 'NAV.HOME', path: './home' });
+    }
+  }
 
   handleLogOut() {
     this.auth.logOut();

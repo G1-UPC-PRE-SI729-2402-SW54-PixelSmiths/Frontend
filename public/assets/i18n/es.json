@@ -1,3 +1,11 @@
 {
-
+  "NAV": {
+    "HOME": "Home",
+    "VEHICLES": "Vehiculos",
+    "INVOICES": "Facturas",
+    "PROFILE": "Perfil",
+    "SUPPORT": "Soporte"
+  },
+  "customer": "Cliente",
+  "owner": "Propietario"
 }

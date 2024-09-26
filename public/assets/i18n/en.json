@@ -1,3 +1,9 @@
 {
-
+    "NAV.HOME": "Home",
+    "NAV.VEHICLES": "Vehicles",
+    "NAV.INVOICES": "Invoices",
+    "NAV.PROFILE": "Profile",
+    "NAV.SUPPORT": "Support",
+    "customer": "Customer",
+    "owner": "Owner"
 }

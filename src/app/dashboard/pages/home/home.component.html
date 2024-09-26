@@ -1,1 +1,6 @@
-<p>home works!</p>
+@if (promotionBannerUrl) {
+<div class="card-with-image">
+  <img [src]="promotionBannerUrl" style="max-height: 70vh" />
+  <app-base-form title="Renta un auto!" [fields]="rentCardFields"></app-base-form>
+</div>
+}

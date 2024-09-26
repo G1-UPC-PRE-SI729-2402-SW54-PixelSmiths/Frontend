@@ -1,21 +1,18 @@
 {
   "users": [
     {
-      "email": "test@correo.com",
-      "name": "juan",
+      "email": "customer@correo.com",
+      "name": "juan perez",
       "password": "123",
+      "role": "customer",
       "id": 1
     },
     {
-      "email": "1@correo.com",
+      "email": "owner@correo.com",
       "password": "123",
       "id": 2,
-      "role": "owner"
-    },
-    {
-      "email": "test@correo.com",
-      "password": "1234",
-      "id": 3
+      "role": "owner",
+      "name": "julio guerra"
     }
   ],
   "vehicles": [
@@ -25,9 +22,7 @@
       "price": "$1000",
       "plate": "123-abc",
       "color": "black",
-      "images": [
-        "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress"
-      ],
+      "images": ["assets/vehicle-1.jpeg"],
       "id": 1
     },
     {
@@ -37,9 +32,16 @@
       "plate": "123-abc",
       "color": "black",
       "price": "$200",
-      "images": [
-        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress"
-      ]
+      "images": ["assets/vehicle-2.jpeg"]
+    },
+    {
+      "id": 2,
+      "brand": "BMW",
+      "model": "model 1",
+      "plate": "123-abc",
+      "color": "black",
+      "price": "$200",
+      "images": ["assets/vehicle-3.jpeg"]
     }
   ],
   "invoices": [

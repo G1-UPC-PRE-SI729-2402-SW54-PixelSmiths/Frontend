@@ -8,16 +8,46 @@
     <form [formGroup]="form" (ngSubmit)="handleSubmit()">
       @for (field of fields; track $index) {
       <p>
-        <mat-form-field>
+        @switch (field.type) {
+        <!---->
+        @case ('checkbox') {
+        <mat-checkbox [formControlName]="field.formControlName">
+          {{ field.label }}
+        </mat-checkbox>
+        }
+
+        <!---->
+        @case ('radio-button') {
+        <mat-radio-group [formControlName]="field.formControlName">
+          @for (item of field.options; track $index) {
+          <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          }
+        </mat-radio-group>
+        }
+
+        <!----->
+        @default {
+        <mat-form-field appearance="outline">
+          @if (field.label) {
+          <mat-label>{{ field.label }}</mat-label>
+          }
           <input
             [type]="field.type"
             matInput
             [placeholder]="field.placeholder ?? ''"
             [formControlName]="field.formControlName"
+            outl
           />
         </mat-form-field>
+        } } 
+        
+        <!---->
+        @if (checkForErrorsIn(field.formControlName)) {
+        <mat-error>
+          {{ checkForErrorsIn(field.formControlName) }}
+        </mat-error>
+        }
       </p>
-
       }
 
       <p *ngIf="error" class="error">
@@ -25,7 +55,9 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-flat-button>Submit</button>
+        <button type="submit" mat-flat-button >
+          Submit
+        </button>
       </div>
 
       <ng-content select="[footer]"></ng-content>

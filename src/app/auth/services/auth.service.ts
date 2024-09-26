@@ -26,7 +26,9 @@ export class AuthService extends BaseService<any> {
       this.setLoggedUser(JSON.stringify(user[0]));
       this.user = user[0];
       this.isAuthenticated = true;
-      this.router.navigateByUrl(this.redirectUrl ?? '/dashboard');
+      this.router.navigateByUrl(
+        this.user.role === 'owner' ? '/dashboard/vehicles' : '/dashboard'
+      );
     } else throw new Error('Usuario no existente');
   }
 

@@ -6,6 +6,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { VehiclesService } from '../../services/vehicles.service';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -28,6 +29,8 @@ export class VehiclesListComponent implements OnInit {
   vehicles: any = [];
   vehiclesService = inject(VehiclesService);
   router = inject(Router);
+  authService = inject(AuthService)
+  isOwner = this.authService.user.role === 'owner'
 
   ngOnInit(): void {
     this.vehiclesService.getAll().subscribe((res) => {
@@ -36,7 +39,6 @@ export class VehiclesListComponent implements OnInit {
   }
 
   handleNewVehicle() {
-    console.log('newww');
     this.router.navigateByUrl('/dashboard/vehicles/new');
   }
 
