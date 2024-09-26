@@ -19,3 +19,8 @@
   top: 0;
   z-index: 1;
 }
+mat-sidenav-content {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

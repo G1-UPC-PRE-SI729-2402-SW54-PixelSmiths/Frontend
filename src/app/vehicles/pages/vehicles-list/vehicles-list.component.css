@@ -20,3 +20,7 @@
     display: flex;
     text-align: center;
 }
+
+.vehicles-list-container {
+    max-width: 900px;
+}
