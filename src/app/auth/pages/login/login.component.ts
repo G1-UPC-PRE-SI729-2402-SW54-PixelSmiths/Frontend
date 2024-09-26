@@ -18,6 +18,7 @@ import {
   BaseFormComponent,
   BaseFormField,
 } from '../../../shared/components/base-form/base-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const rand = (start: number, end: number) => {
   return Math.floor(Math.random() * start + end);
@@ -33,6 +34,7 @@ const rand = (start: number, end: number) => {
 export class LoginComponent implements OnInit {
   @Input() error?: string;
   @Output() submitEM = new EventEmitter();
+  snackbar = inject(MatSnackBar);
   mode: 'sign-in' | 'sign-up';
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
@@ -51,7 +53,12 @@ export class LoginComponent implements OnInit {
   handleLogin(formValue: any) {
     if (this.mode === 'sign-up') {
       this.authService.create(formValue).subscribe((res) => {
-        this.router.navigateByUrl('/sign-in');
+        this.snackbar
+          .open('Usuario creado con exito', undefined, { duration: 1000 })
+          .afterOpened()
+          .subscribe((res) => {
+            this.router.navigateByUrl('/sign-in');
+          });
       });
     } else if (this.mode === 'sign-in') {
       this.authService.loginUser(formValue).catch((error) => {
@@ -65,8 +72,8 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.authService.getIsAuthenticated()) {
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/dashboard');
     }
-    this.imageUrl = `/assets/login-${Math.floor(Math.random()*3 + 1)}.avif`;
+    this.imageUrl = `/assets/login-${Math.floor(Math.random() * 3 + 1)}.avif`;
   }
 }

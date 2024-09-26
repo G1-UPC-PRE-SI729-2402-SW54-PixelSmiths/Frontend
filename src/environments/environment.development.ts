@@ -1,4 +1,4 @@
 export const environments = {
   production: false,
-  serverBasePath: 'http://localhost:3000/api/v1',
+  serverBasePath: 'http://localhost:4444/api/v1',
 }
