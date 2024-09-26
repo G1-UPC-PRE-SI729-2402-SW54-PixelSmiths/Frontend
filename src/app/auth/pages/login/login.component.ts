@@ -19,11 +19,6 @@ import {
   BaseFormField,
 } from '../../../shared/components/base-form/base-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-const rand = (start: number, end: number) => {
-  return Math.floor(Math.random() * start + end);
-};
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -40,22 +35,49 @@ export class LoginComponent implements OnInit {
   router = inject(Router);
   fields: BaseFormField[] = [
     {
-      type: 'text',
-      placeholder: 'Email',
+      type: 'email',
       formControlName: 'email',
+      label: 'Email',
+      required: true,
     },
-    { type: 'password', placeholder: 'Password', formControlName: 'password' },
+    {
+      type: 'password',
+      formControlName: 'password',
+      label: 'Password',
+      required: true,
+    },
   ];
   authService = inject(AuthService);
-
   imageUrl?: string;
 
+
+
+  constructor() {
+    this.mode = this.activatedRoute.snapshot.data['mode'] ?? 'sign-in';
+
+    if (this.mode === 'sign-up') {
+      this.fields.unshift({
+        formControlName: 'name',
+        label: 'Name',
+        type: 'text',
+        required: true,
+      });
+
+      this.fields.push({
+        formControlName: 'role',
+        label: 'Rol',
+        type: 'radio-button',
+        options: ['owner', 'user'],
+        required: true,
+      });
+    }
+  }
   handleLogin(formValue: any) {
     if (this.mode === 'sign-up') {
       this.authService.create(formValue).subscribe((res) => {
         this.snackbar
-          .open('Usuario creado con exito', undefined, { duration: 1000 })
-          .afterOpened()
+          .open('Usuario creado con exito', undefined, { duration: 2000,  })
+          .afterDismissed()
           .subscribe((res) => {
             this.router.navigateByUrl('/sign-in');
           });
@@ -65,10 +87,6 @@ export class LoginComponent implements OnInit {
         this.error = error;
       });
     }
-  }
-
-  constructor() {
-    this.mode = this.activatedRoute.snapshot.data['mode'] ?? 'sign-in';
   }
   ngOnInit(): void {
     if (this.authService.getIsAuthenticated()) {

@@ -16,6 +16,27 @@
       "email": "test@correo.com",
       "password": "1234",
       "id": 3
+    },
+    {
+      "name": "javier",
+      "email": "javier@correo.com",
+      "password": "123",
+      "role": "owner",
+      "id": 4
+    },
+    {
+      "name": "e",
+      "email": "e@s.com",
+      "password": "e",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "name": "javier",
+      "email": "javier@correo.com",
+      "password": "123",
+      "role": "owner",
+      "id": 6
     }
   ],
   "vehicles": [
