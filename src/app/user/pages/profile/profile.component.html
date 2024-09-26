@@ -1,0 +1,17 @@
+<div style="display: flex;">
+  <h1>Profile</h1>
+  <button
+    type="button"
+    aria-label="Go back button"
+    mat-icon-button
+    (click)="goBack()"
+  >
+    <mat-icon aria-label="go back">arrow_back</mat-icon>
+  </button>
+</div>
+@if (fields) {
+<app-base-form
+  [fields]="fields"
+  (onSubmit)="saveProfile($event)"
+></app-base-form>
+}

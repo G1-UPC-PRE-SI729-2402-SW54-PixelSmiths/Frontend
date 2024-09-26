@@ -2,17 +2,13 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { InvoicesComponent } from './dashboard/pages/invoices/invoices.component';
 import { SupportComponent } from './dashboard/pages/support/support.component';
-import { ProfileComponent } from './dashboard/pages/profile/profile.component';
+import { ProfileComponent } from './user/pages/profile/profile.component';
 import { HomeComponent } from './dashboard/pages/home/home.component';
 import { DashComponent } from './dashboard/pages/dash/dash.component';
 import { authGuard } from './auth/guard/auth.guard';
 import { VehicleDetailComponent } from './vehicles/pages/vehicle-detail/vehicle-detail.component';
 import { VehiclesListComponent } from './vehicles/pages/vehicles-list/vehicles-list.component';
 import {AddInvoiceComponent} from "./dashboard/pages/invoices/add-invoice/add-invoice.component";
-import {InvoiceCardComponent} from "./dashboard/pages/invoices/invoice-card/invoice-card.component";
-import {
-  InvoiceCreateAndEditComponent
-} from "./dashboard/pages/invoices/invoice-create-and-edit/invoice-create-and-edit.component";
 
 export const routes: Routes = [
   {
