@@ -6,7 +6,7 @@ import {
   BaseFormField,
 } from '../../../shared/components/base-form/base-form.component';
 import { lastValueFrom } from 'rxjs';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { NgStyle } from '@angular/common';
 

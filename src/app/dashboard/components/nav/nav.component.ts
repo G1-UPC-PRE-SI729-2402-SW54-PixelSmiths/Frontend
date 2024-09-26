@@ -35,7 +35,6 @@ export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   auth = inject(AuthService);
   menuOptions = [
-    { label: 'Home', path: './home' },
     { label: 'Vehicles', path: './vehicles' },
     { label: 'Invoices', path: './invoices' },
     { label: 'Profile', path: './profile' },
