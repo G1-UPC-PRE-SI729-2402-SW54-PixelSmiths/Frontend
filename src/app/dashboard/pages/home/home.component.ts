@@ -28,8 +28,6 @@ export class HomeComponent implements OnInit {
     },
   ];
   ngOnInit(): void {
-    this.promotionBannerUrl = `/assets/promo-banner-${Math.floor(
-      Math.random() * 2 + 1
-    )}.jpeg`;
+    this.promotionBannerUrl = `/assets/promo-banner.jpeg`;
   }
 }
