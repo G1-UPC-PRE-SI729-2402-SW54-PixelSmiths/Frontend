@@ -50,8 +50,6 @@ export class LoginComponent implements OnInit {
   authService = inject(AuthService);
   imageUrl?: string;
 
-
-
   constructor() {
     this.mode = this.activatedRoute.snapshot.data['mode'] ?? 'sign-in';
 
@@ -67,16 +65,17 @@ export class LoginComponent implements OnInit {
         formControlName: 'role',
         label: 'Rol',
         type: 'radio-button',
-        options: ['owner', 'user'],
+        options: ['owner', 'customer'],
         required: true,
       });
     }
   }
   handleLogin(formValue: any) {
     if (this.mode === 'sign-up') {
+      // TODO validar si usuario/email existe
       this.authService.create(formValue).subscribe((res) => {
         this.snackbar
-          .open('Usuario creado con exito', undefined, { duration: 2000,  })
+          .open('Usuario creado con exito', undefined, { duration: 2000 })
           .afterDismissed()
           .subscribe((res) => {
             this.router.navigateByUrl('/sign-in');

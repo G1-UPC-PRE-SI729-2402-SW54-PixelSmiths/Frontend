@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { NgStyle } from '@angular/common';
+import { random } from '../../../shared/utils/random';
 
 @Component({
   selector: 'app-vehicle-detail',
@@ -22,8 +23,7 @@ export class VehicleDetailComponent implements OnInit {
   router = inject(Router);
   vehiclesService = inject(VehiclesService);
   vehicle: any;
-  image?: string =
-    'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress';
+  image?: string;
 
   fields: BaseFormField[] = [];
   async ngOnInit() {
@@ -39,6 +39,7 @@ export class VehicleDetailComponent implements OnInit {
       this.image = this.vehicle.images?.[0];
     } else {
       this.vehicle = {};
+      this.image = `/assets/vehicle-${Math.floor(Math.random() * 3 + 1)}.jpeg`;
     }
 
     this.fields = [

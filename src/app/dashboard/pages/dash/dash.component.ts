@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { NavComponent } from '../../components/nav/nav.component';
 import { RouterOutlet } from '@angular/router';
+import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-dash',
@@ -24,6 +25,9 @@ import { RouterOutlet } from '@angular/router';
     MatCardModule,
     NavComponent,
     RouterOutlet,
+    LanguageSwitcherComponent
   ],
 })
-export class DashComponent {}
+export class DashComponent {
+
+}

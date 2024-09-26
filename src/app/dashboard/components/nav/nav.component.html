@@ -11,7 +11,7 @@
     <mat-nav-list>
       @for (item of menuOptions; track $index) {
       <a mat-list-item [routerLink]="item.path" routerLinkActive="active">{{
-        item.label
+        item.label | translate
       }}</a>
       }
     </mat-nav-list>
@@ -31,9 +31,9 @@
       <span>take-my-car</span>
 
       <div style="flex: 1 1 auto"></div>
-      <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center">
         @if (auth.user?.role) {
-          <span>{{auth.user.role === 'tenant'? 'Usuario': 'Owner'}}: </span>
+        <span>{{ auth.user.role | translate }}: {{ " " }} </span>
         }
         <span> {{ auth.user?.name }} </span>
         <button
