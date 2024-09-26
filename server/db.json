@@ -11,6 +11,11 @@
       "password": "123",
       "id": 2,
       "role": "owner"
+    },
+    {
+      "email": "test@correo.com",
+      "password": "1234",
+      "id": 3
     }
   ],
   "vehicles": [

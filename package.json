@@ -8,10 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:server:prod":  "json-server --watch server/db.json --routes server/routes.json --port $PORT",
-    "start:server:local":  "json-server --watch server/db.json --routes server/routes.json",
+    "start:server": "node server/server.js",
     "build:server": "echo 'building server'"
-
   },
   "private": true,
   "dependencies": {
