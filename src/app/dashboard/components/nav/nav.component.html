@@ -29,18 +29,27 @@
       </button>
       }
       <span>take-my-car</span>
-      <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+
+      <div style="flex: 1 1 auto"></div>
+      <div style="display: flex; align-items: center;">
+        @if (auth.user?.role) {
+          <span>{{auth.user.role === 'tenant'? 'Usuario': 'Owner'}}: </span>
+        }
+        <span> {{ auth.user?.name }} </span>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          style="margin-right: 1rem"
+        >
           <mat-icon>account_circle</mat-icon>
-        {{ auth.user?.name }}
         </button>
+        <mat-menu #menu>
+          <button (click)="handleLogOut()" mat-button>
+            <mat-icon>logout</mat-icon>
+            cerrar sesión
+          </button>
+        </mat-menu>
       </div>
-      <mat-menu #menu>
-        <button (click)="handleLogOut()" mat-button>
-          <mat-icon>logout</mat-icon>
-          cerrar sesión
-        </button>
-      </mat-menu>
     </mat-toolbar>
 
     <ng-content></ng-content>

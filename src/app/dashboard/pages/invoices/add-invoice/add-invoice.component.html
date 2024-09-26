@@ -1,0 +1,9 @@
+<div class="container-add-invoice">
+  <div class="content-add-invoice">
+    <div class="content-create-and-edit">
+      <app-invoice-create-and-edit (invoiceAdded)="onInvoiceAdded($event)"/>
+    </div>
+    <button class="cancel-invoice" (click)="onCancel()">Cancel</button>
+  </div>
+
+</div>

@@ -10,7 +10,7 @@
 <div
 class="grid"
 >
-  <img width="300px" [src]="image" />
-  <app-base-form [fields]="fields"></app-base-form>
+  <img [src]="image" />
+  <app-base-form [fields]="fields" (onSubmit)="saveVehicle($event)"></app-base-form>
 </div>
 }

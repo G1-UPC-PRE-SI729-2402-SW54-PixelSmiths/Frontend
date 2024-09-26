@@ -1,0 +1,63 @@
+<div class="invoice-table-container ">
+
+  <mat-form-field class="queweba">
+    <mat-label>
+      <mat-icon>search</mat-icon> Search
+    </mat-label>
+    <input matInput (keyup)="applyFilter()" placeholder="Search something" #filterInput>
+  </mat-form-field>
+
+  <mat-table [dataSource]="invoices" class="mat-elevation-z8">
+    <ng-container matColumnDef="number">
+      <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Issue Date Column -->
+    <ng-container matColumnDef="issue_date">
+      <mat-header-cell *matHeaderCellDef> Issue Date </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.paymentDate}} </mat-cell>
+    </ng-container>
+
+    <!-- Total Column -->
+    <ng-container matColumnDef="total">
+      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> S/.{{invoice.amount}} </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.paymentState}} </mat-cell>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef> View </mat-header-cell>
+      <mat-cell *matCellDef="let invoice">
+        <button mat-raised-button color="primary" (click)="preview(invoice.id)">View</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let invoice">
+        <button mat-button (click)="deleteInvoice(invoice.id)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let invoice">
+        <button mat-button (click)="editInvoice(invoice)">
+          <mat-icon>edit</mat-icon>Change Status
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

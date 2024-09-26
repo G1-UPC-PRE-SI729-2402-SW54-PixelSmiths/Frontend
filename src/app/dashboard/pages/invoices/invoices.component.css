@@ -1,0 +1,106 @@
+.invoice-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-invoice-list h1{
+  color: black;
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+.container-invoice-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.content-invoice-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:#002e43 ;
+  width: 80%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.content-search{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#002e43 ;
+}
+
+.search-list {
+  display: flex;
+  height: 100px;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #6A90A9;
+  color: white;
+  border-radius: 10px;
+}
+
+.search-list input {
+  background-color: #f1f1f1;
+  color: #406378;
+  border: none;
+  width: 200px;
+  height: 30px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.search-list input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.search-list p {
+  margin-left: 10px;
+  margin-right: 50px;
+  background-color: #6A90A9;
+}
+
+.view-list {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.add-event {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  background-color:#002e43 ;
+}
+
+.add-event button{
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-event button:hover {
+  background-color: #555555;
+  color: #ffffff;
+}

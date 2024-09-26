@@ -5,7 +5,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { VehiclesService } from '../../services/vehicles.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
     MatButton,
     MatIconButton,
     MatMenuItem,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './vehicles-list.component.html',
   styleUrl: './vehicles-list.component.css',
@@ -27,10 +27,24 @@ import { RouterLink } from '@angular/router';
 export class VehiclesListComponent implements OnInit {
   vehicles: any = [];
   vehiclesService = inject(VehiclesService);
+  router = inject(Router);
 
   ngOnInit(): void {
     this.vehiclesService.getAll().subscribe((res) => {
       this.vehicles = res as any;
+    });
+  }
+
+  handleNewVehicle() {
+    console.log('newww');
+    this.router.navigateByUrl('/dashboard/vehicles/new');
+  }
+
+  handleDelete(id: string) {
+    this.vehiclesService.delete(id).subscribe((res) => {
+      if (res) {
+        this.vehicles = this.vehicles.filter((v: any) => v.id !== id);
+      }
     });
   }
 }

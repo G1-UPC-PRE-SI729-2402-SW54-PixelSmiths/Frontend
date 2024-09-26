@@ -1,29 +1,29 @@
 {
   "users": [
     {
-      "id": 1,
       "email": "test@correo.com",
       "name": "juan",
       "password": "123",
-      "role": []
+      "id": 1
     },
     {
       "email": "1@correo.com",
       "password": "123",
-      "id": 2
+      "id": 2,
+      "role": "owner"
     }
   ],
   "vehicles": [
     {
-      "id": 1,
       "brand": "Land Rover",
       "model": "model 1",
-      "price": "$100",
+      "price": "$1000",
       "plate": "123-abc",
       "color": "black",
       "images": [
         "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress"
-      ]
+      ],
+      "id": 1
     },
     {
       "id": 2,
@@ -39,10 +39,48 @@
   ],
   "invoices": [
     {
-      "id": 1,
-      "date": "23 jun 2024",
-      "amount": "$125",
-      "status": "paid"
+      "id": "2",
+      "code": "F0001385",
+      "amount": "95",
+      "paymentMethod": "",
+      "paymentState": "UnPaid",
+      "paymentDate": "2024-09-26",
+      "apiId": "v1"
+    },
+    {
+      "id": "3",
+      "code": "F0001386",
+      "amount": "70",
+      "paymentMethod": "",
+      "paymentState": "Paid",
+      "paymentDate": "2024-09-26",
+      "apiId": "v1"
+    },
+    {
+      "id": "4",
+      "code": "F0001387",
+      "amount": "120",
+      "paymentMethod": "Paypal",
+      "paymentState": "Paid",
+      "paymentDate": "2024-09-26",
+      "apiId": "v1"
+    },
+    {
+      "id": "5",
+      "code": "F0001388",
+      "amount": "79",
+      "paymentMethod": "Visa",
+      "paymentState": "Paid",
+      "paymentDate": "2024-09-26",
+      "apiId": "v1"
+    },
+    {
+      "id": "6",
+      "code": "F0001385",
+      "amount": "123",
+      "paymentMethod": "Paypal",
+      "paymentState": "Paid",
+      "paymentDate": "2024-09-26"
     }
   ]
 }

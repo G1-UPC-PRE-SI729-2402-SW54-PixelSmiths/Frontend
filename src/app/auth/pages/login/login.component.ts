@@ -1,5 +1,12 @@
 import { NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardModule } from '@angular/material/card';
@@ -12,6 +19,10 @@ import {
   BaseFormField,
 } from '../../../shared/components/base-form/base-form.component';
 
+const rand = (start: number, end: number) => {
+  return Math.floor(Math.random() * start + end);
+};
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -19,7 +30,7 @@ import {
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @Input() error?: string;
   @Output() submitEM = new EventEmitter();
   mode: 'sign-in' | 'sign-up';
@@ -35,6 +46,8 @@ export class LoginComponent {
   ];
   authService = inject(AuthService);
 
+  imageUrl?: string;
+
   handleLogin(formValue: any) {
     if (this.mode === 'sign-up') {
       this.authService.create(formValue).subscribe((res) => {
@@ -48,6 +61,12 @@ export class LoginComponent {
   }
 
   constructor() {
-    this.mode = this.activatedRoute.snapshot.data['mode'];
+    this.mode = this.activatedRoute.snapshot.data['mode'] ?? 'sign-in';
+  }
+  ngOnInit(): void {
+    if (this.authService.getIsAuthenticated()) {
+      this.router.navigateByUrl('/dashboard')
+    }
+    this.imageUrl = `/assets/login-${Math.floor(Math.random()*3 + 1)}.avif`;
   }
 }
