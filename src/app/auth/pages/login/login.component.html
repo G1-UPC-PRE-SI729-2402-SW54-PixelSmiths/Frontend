@@ -3,6 +3,7 @@
     <app-base-form
       [title]="mode === 'sign-in' ? 'LOGIN' : 'SIGN UP'"
       [fields]="fields"
+      [error]="error"
       (onSubmit)="handleLogin($event)"
     >
       <ng-container footer>
@@ -18,5 +19,5 @@
       </ng-container>
     </app-base-form>
   </div>
-    <img [src]="imageUrl">
+  <img [src]="imageUrl" />
 </div>

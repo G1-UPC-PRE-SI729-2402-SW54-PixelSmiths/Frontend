@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehiclesService } from '../../services/vehicles.service';
 import {
   BaseFormComponent,
@@ -19,20 +19,26 @@ import { NgStyle } from '@angular/common';
 })
 export class VehicleDetailComponent implements OnInit {
   route = inject(ActivatedRoute);
+  router = inject(Router);
   vehiclesService = inject(VehiclesService);
   vehicle: any;
-  image?: string;
+  image?: string =
+    'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress';
 
   fields: BaseFormField[] = [];
   async ngOnInit() {
-    const vehicleId = this.route.snapshot.paramMap.get('id') ?? '';
+    const { paramMap, data } = this.route.snapshot;
+    const vehicleId = paramMap.get('id') ?? '';
+    const isNewVehicle = data['mode'] === 'new-vehicle';
 
-    if (vehicleId) {
+    if (vehicleId && !isNewVehicle) {
       this.vehicle = (
         await lastValueFrom(this.vehiclesService.find({ id: vehicleId }))
       )?.[0];
 
-      this.image = this.vehicle.images?.[0] 
+      this.image = this.vehicle.images?.[0];
+    } else {
+      this.vehicle = {};
     }
 
     this.fields = [
@@ -40,33 +46,52 @@ export class VehicleDetailComponent implements OnInit {
         formControlName: 'brand',
         placeholder: 'Brand',
         type: 'text',
+        required: true,
         value: this.vehicle.brand,
       },
       {
         formControlName: 'model',
         placeholder: 'Model',
         type: 'text',
+        required: true,
         value: this.vehicle.model,
       },
       {
         formControlName: 'price',
         placeholder: 'Price For Rent',
         type: 'text',
+        required: true,
         value: this.vehicle.price,
       },
       {
         formControlName: 'plate',
         placeholder: 'Plate',
         type: 'text',
+        required: true,
         value: this.vehicle.plate,
       },
       {
         formControlName: 'color',
         placeholder: 'Color',
         type: 'text',
+        required: true,
         value: this.vehicle.color,
       },
     ];
+  }
+
+  saveVehicle(data: any) {
+    data.images = this.vehicle.images ?? [this.image];
+
+    if (this.vehicle.id) {
+      this.vehiclesService.update(this.vehicle.id, data).subscribe((res) => {
+        this.router.navigateByUrl('/dashboard/vehicles');
+      });
+    } else {
+      this.vehiclesService.create(data).subscribe((res) => {
+        this.router.navigateByUrl('/dashboard/vehicles');
+      });
+    }
   }
 
   goBack() {

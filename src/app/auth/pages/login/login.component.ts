@@ -64,6 +64,9 @@ export class LoginComponent implements OnInit {
     this.mode = this.activatedRoute.snapshot.data['mode'] ?? 'sign-in';
   }
   ngOnInit(): void {
+    if (this.authService.getIsAuthenticated()) {
+      this.router.navigateByUrl('/dashboard')
+    }
     this.imageUrl = `/assets/login-${Math.floor(Math.random()*3 + 1)}.avif`;
   }
 }
