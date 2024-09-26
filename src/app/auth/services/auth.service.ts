@@ -28,10 +28,6 @@ export class AuthService extends BaseService<any> {
       this.isAuthenticated = true;
       this.router.navigateByUrl(this.redirectUrl ?? '/dashboard');
     } else throw new Error('Usuario no existente');
-    //this.setLoggedUser(res.toString());
-
-    // this.authService.setLoggedUser(JSON.stringify(this.form.value));
-    // this.router.navigateByUrl('/dashboard');
   }
 
   validateSavedUser() {

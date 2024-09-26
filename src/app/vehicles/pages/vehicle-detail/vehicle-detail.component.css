@@ -1,5 +1,21 @@
 .grid {
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
+  place-items: center;
+  img {
+    width: 100%
+  };
+}
+
+
+@media screen and (max-width: 650px) {
+  .grid {
+    grid-template-columns: 1fr;
+
+  }
+  img {
+    width: 100%;
+  }
 }

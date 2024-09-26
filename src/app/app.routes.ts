@@ -49,6 +49,13 @@ export const routes: Routes = [
             component: VehiclesListComponent,
           },
           {
+            path: 'new',
+            component: VehicleDetailComponent,
+            data: {
+              mode: 'new-vehicle'
+            }
+          },
+          {
             path: ':id',
             component: VehicleDetailComponent,
           },
