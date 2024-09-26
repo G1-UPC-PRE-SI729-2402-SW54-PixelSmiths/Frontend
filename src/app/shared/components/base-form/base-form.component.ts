@@ -24,7 +24,7 @@ import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { Router } from '@angular/router';
 
 export type BaseFormField = {
-  type: 'text' | 'password' | 'email' | 'checkbox' | 'radio-button';
+  type: 'text' | 'password' | 'email' | 'checkbox' | 'radio-button' | 'date';
   placeholder?: string;
   label?: string;
   formControlName: string;

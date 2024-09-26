@@ -1,0 +1,10 @@
+.card-with-image{
+  display: grid;
+  grid-template-columns:repeat(2, 50%);
+}
+
+@media (max-width: 728px) {
+  .card-with-image{
+    grid-template-columns: 1fr;
+  }
+}
