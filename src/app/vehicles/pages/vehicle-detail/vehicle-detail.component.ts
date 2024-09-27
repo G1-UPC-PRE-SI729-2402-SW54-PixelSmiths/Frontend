@@ -9,7 +9,7 @@ import { lastValueFrom } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { NgStyle } from '@angular/common';
-import { random } from '../../../shared/utils/random';
+import { VehicleType } from '../../model/vehicle.entity';
 
 @Component({
   selector: 'app-vehicle-detail',
@@ -22,7 +22,7 @@ export class VehicleDetailComponent implements OnInit {
   route = inject(ActivatedRoute);
   router = inject(Router);
   vehiclesService = inject(VehiclesService);
-  vehicle: any;
+  vehicle?: VehicleType;
   image?: string;
 
   fields: BaseFormField[] = [];
@@ -38,7 +38,6 @@ export class VehicleDetailComponent implements OnInit {
 
       this.image = this.vehicle.images?.[0];
     } else {
-      this.vehicle = {};
       this.image = `/assets/vehicle-${Math.floor(Math.random() * 3 + 1)}.jpeg`;
     }
 
@@ -48,43 +47,43 @@ export class VehicleDetailComponent implements OnInit {
         placeholder: 'Brand',
         type: 'text',
         required: true,
-        value: this.vehicle.brand,
+        value: this.vehicle?.brand,
       },
       {
         formControlName: 'model',
         placeholder: 'Model',
         type: 'text',
         required: true,
-        value: this.vehicle.model,
+        value: this.vehicle?.model,
       },
       {
         formControlName: 'price',
         placeholder: 'Price For Rent',
         type: 'text',
         required: true,
-        value: this.vehicle.price,
+        value: this.vehicle?.price,
       },
       {
         formControlName: 'plate',
         placeholder: 'Plate',
         type: 'text',
         required: true,
-        value: this.vehicle.plate,
+        value: this.vehicle?.plate,
       },
       {
         formControlName: 'color',
         placeholder: 'Color',
         type: 'text',
         required: true,
-        value: this.vehicle.color,
+        value: this.vehicle?.color,
       },
     ];
   }
 
   saveVehicle(data: any) {
-    data.images = this.vehicle.images ?? [this.image];
+    data.images = this.vehicle?.images ?? [this.image];
 
-    if (this.vehicle.id) {
+    if (this.vehicle?.id) {
       this.vehiclesService.update(this.vehicle.id, data).subscribe((res) => {
         this.router.navigateByUrl('/dashboard/vehicles');
       });

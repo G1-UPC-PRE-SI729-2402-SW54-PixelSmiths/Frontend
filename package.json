@@ -6,10 +6,10 @@
     "start:dev": "ng serve --configuration development",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:server": "node server/server.js",
-    "build:server": "echo 'building server'"
+    "start:server": "node server/server.js"
   },
   "private": true,
   "dependencies": {
